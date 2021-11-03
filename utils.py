@@ -36,7 +36,7 @@ def key_of_min_value(d):
     'c'
     """
     # BEGIN Question 0
-    return min([x for x in d], key=lambda x: d[x])
+    return min(d, key=lambda x: d[x])
     # END Question 0
 
 def zip(*sequences):
