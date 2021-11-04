@@ -19,7 +19,8 @@ def find_closest(location, centroids):
     [2.0, 3.0]
     """
     # BEGIN Question 3
-    "*** YOUR CODE HERE ***"
+    dist_lst =[[centroid, distance(location, centroid)] for centroid in centroids]
+    return min(dist_lst, key = lambda x: x[1])[0]
     # END Question 3
 
 
