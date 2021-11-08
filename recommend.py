@@ -49,9 +49,8 @@ def group_by_centroid(restaurants, centroids):
     restaurants closest to the same centroid.
     """
     # BEGIN Question 4
-    "*** YOUR CODE HERE ***"
+    return group_by_first(zip([find_closest(restaurant_location(x), centroids) for x in restaurants], restaurants))
     # END Question 4
-
 
 def find_centroid(cluster):
     """Return the centroid of the locations of the restaurants in cluster."""
