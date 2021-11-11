@@ -95,7 +95,12 @@ def find_predictor(user, restaurants, feature_fn):
     ys = [user_rating(user, restaurant_name(r)) for r in restaurants]
 
     # BEGIN Question 7
-    "*** YOUR CODE HERE ***"
+    S_xx = sum([(x - mean(xs))**2 for x in xs])
+    S_yy = sum([(y - mean(ys))**2 for y in ys])
+    S_xy = sum([(i[0] - mean(xs)) * (i[1] - mean(ys)) for i in zip(xs, ys)])
+    b = S_xy / S_xx
+    a = mean(ys) - b*mean(xs)
+    r_squared = S_xy**2 / (S_xx * S_yy)
     # END Question 7
 
     def predictor(restaurant):
@@ -115,7 +120,7 @@ def best_predictor(user, restaurants, feature_fns):
     """
     reviewed = user_reviewed_restaurants(user, restaurants)
     # BEGIN Question 8
-    "*** YOUR CODE HERE ***"
+    return max([find_predictor(user, reviewed, ff) for ff in feature_fns], key=lambda z : z[1])[0]
     # END Question 8
 
 
